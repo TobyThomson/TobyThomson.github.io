@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Series on Toby&#39;s Notes</title>
-    <link>www.tobythomson.co.uk/series/</link>
+    <link>https://www.tobythomson.co.uk/series/</link>
     <description>Recent content in Series on Toby&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language><atom:link href="www.tobythomson.co.uk/series/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-gb</language><atom:link href="https://www.tobythomson.co.uk/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
