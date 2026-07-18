@@ -1,6 +1,7 @@
 ---
 title: Example Project
 description: A short one-line description of what this project is.
+year: 2024
 ---
 
 ## Overview

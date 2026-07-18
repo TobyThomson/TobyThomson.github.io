@@ -5,11 +5,14 @@ permalink: /portfolio/
 ---
 
 <h1>Portfolio</h1>
-<ul class="project-list">
-{% for project in collections.projects %}
-  <li>
-    <a href="{{ project.url }}">{{ project.data.title }}</a>
-    {% if project.data.description %}<span class="project-desc"> — {{ project.data.description }}</span>{% endif %}
-  </li>
+{% for group in collections.projects | groupByYear %}
+  <h2>{{ group.year }}</h2>
+  <ul class="project-list">
+  {% for project in group.projects %}
+    <li>
+      <a href="{{ project.url }}">{{ project.data.title }}</a>
+      {% if project.data.description %}<span class="project-desc"> — {{ project.data.description }}</span>{% endif %}
+    </li>
+  {% endfor %}
+  </ul>
 {% endfor %}
-</ul>
