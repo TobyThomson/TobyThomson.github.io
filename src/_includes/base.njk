@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} — Toby Thomson</title>
+  <meta name="description" content="{{ description or "Toby Thomson" }}">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="site-header">
+      <a class="site-name" href="/">Toby Thomson</a>
+      <nav class="site-nav">
+        <a href="/about/"{% if page.url == "/about/" %} aria-current="page"{% endif %}>About</a>
+        <a href="/portfolio/"{% if page.url == "/portfolio/" %} aria-current="page"{% endif %}>Portfolio</a>
+        <a href="/contact/"{% if page.url == "/contact/" %} aria-current="page"{% endif %}>Contact</a>
+      </nav>
+    </header>
+    <main class="content">
+      {{ content | safe }}
+    </main>
+  </div>
+</body>
+</html>
