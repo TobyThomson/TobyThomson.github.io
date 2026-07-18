@@ -5,4 +5,11 @@ permalink: /portfolio/
 ---
 
 <h1>Portfolio</h1>
-<p>Replace this with your portfolio content.</p>
+<ul class="project-list">
+{% for project in collections.projects %}
+  <li>
+    <a href="{{ project.url }}">{{ project.data.title }}</a>
+    {% if project.data.description %}<span class="project-desc"> — {{ project.data.description }}</span>{% endif %}
+  </li>
+{% endfor %}
+</ul>
