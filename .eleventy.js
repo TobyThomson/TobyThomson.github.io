@@ -15,6 +15,24 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy({ "src/static": "/" });
 
+  eleventyConfig.addShortcode("figure", function (src, caption, alt) {
+    const escape = (str) =>
+      String(str).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      }[c]));
+
+    const altText = alt || String(caption).replace(/<[^>]+>/g, "");
+
+    return `<figure class="figure">
+  <img src="${escape(src)}" alt="${escape(altText)}">
+  <figcaption>${caption}</figcaption>
+</figure>`;
+  });
+
   return {
     dir: {
       input: "src",

@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" style="background:#111214">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact — Toby Thomson</title>
+  <title>Toby Thomson - Contact</title>
   <meta name="description" content="Toby Thomson">
   <link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
   <style>/* ---------- Font ---------- */
@@ -28,6 +28,11 @@ html,
 body {
   margin: 0;
   padding: 0;
+}
+
+html {
+  background: var(--color-bg);
+  scrollbar-gutter: stable;
 }
 
 /* ---------- Theme (dark, always — light only on print) ---------- */
@@ -159,6 +164,30 @@ img {
   color: var(--color-text-muted);
 }
 
+/* ---------- Figure ---------- */
+
+.figure {
+  position: relative;
+  margin: 1.5rem 0 0;
+}
+
+.figure img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.figure figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 0.85rem;
+  border-radius: 0 0 4px 4px;
+}
+
 /* ---------- Project page ---------- */
 
 .back-link {
@@ -185,8 +214,14 @@ img {
     --color-link: #111111;
   }
 
+  html,
   body {
     background: var(--color-bg);
+  }
+
+  .figure figcaption,
+  .figure figcaption a {
+    color: #fff;
   }
 }
 </style>
@@ -205,11 +240,12 @@ img {
       
 <h1>Contact</h1>
 
-Email: <a href="mailto:me@tobythomson.co.uk">me@tobythomson.co.uk</a>
-<br>
-LinkedIn: <a href="https://www.linkedin.com/in/toby-thomson-92983813b/">https://www.linkedin.com/in/toby-thomson-92983813b/</a>
-<br>
-GitHub: <a href="https://github.com/TobyThomson">https://github.com/TobyThomson</a>
+You can reach me by any of the following. Email is preferred:
+<ul>
+  <li>Email: <a href="mailto:me@tobythomson.co.uk">me@tobythomson.co.uk</a></li>
+  <li>LinkedIn: <a href="https://www.linkedin.com/in/toby-thomson-92983813b/">https://www.linkedin.com/in/toby-thomson-92983813b/</a></li>
+  <li>GitHub: <a href="https://github.com/TobyThomson">https://github.com/TobyThomson</a></li>
+</ul>
     </main>
   </div>
 </body>
