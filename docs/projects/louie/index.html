@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toby Thomson - Louie</title>
+  <meta name="description" content="2 kN LOX/IPA rocket engine, Race to Space 2023/24">
+  <link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <style>/* ---------- Font ---------- */
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/InterVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+
+/* ---------- Reset ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--color-bg);
+  scrollbar-gutter: stable;
+}
+
+/* ---------- Theme (dark, always — light only on print) ---------- */
+
+:root {
+  --color-bg: #111214;
+  --color-text: #e8e8e6;
+  --color-text-muted: #9a9a98;
+  --color-border: #2a2b2d;
+  --color-link: #e8e8e6;
+  --content-max-width: 720px;
+  --content-padding: 1.5rem;
+}
+
+/* ---------- Base ---------- */
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--color-link);
+}
+
+a:hover,
+a:focus-visible {
+  opacity: 0.7;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 2rem 0 0.75rem;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child {
+  margin-top: 0;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------- Layout shell ---------- */
+
+.shell {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--content-padding);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-name {
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--color-text-muted);
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--color-text);
+  opacity: 1;
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--color-text);
+}
+
+/* ---------- Content ---------- */
+
+.content {
+  padding-bottom: 1.5rem;
+}
+
+/* ---------- Portfolio ---------- */
+
+.project-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-desc {
+  color: var(--color-text-muted);
+}
+
+/* ---------- Figure ---------- */
+
+.figure {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.figure img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.figure figcaption,
+.video-figure figcaption,
+.pdf-figure figcaption {
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 0.85rem;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Figures overlay the caption on the image; video and PDF sit it underneath. */
+.figure figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* ---------- Video figure ---------- */
+
+.video-figure {
+  margin: 1.5rem 0;
+}
+
+.video-figure .video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+}
+
+.video-figure .video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------- PDF figure ---------- */
+
+.pdf-figure {
+  margin: 1.5rem 0;
+}
+
+.pdf-figure .pdf-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-bottom: 0;
+  background: #fff;
+}
+
+.pdf-figure .pdf-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Embedded PDFs don't render on most mobile browsers; offer the link instead. */
+@media (max-width: 600px) {
+  .pdf-figure .pdf-frame {
+    display: none;
+  }
+
+  /* With no frame above it, the caption is the whole element. */
+  .pdf-figure figcaption {
+    border-radius: 4px;
+  }
+}
+
+/* ---------- Project page ---------- */
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  color: var(--color-text);
+  opacity: 1;
+}
+
+/* ---------- Print: force light mode ---------- */
+
+@media print {
+  :root {
+    --color-bg: #ffffff;
+    --color-text: #111111;
+    --color-text-muted: #444444;
+    --color-border: #cccccc;
+    --color-link: #111111;
+  }
+
+  html,
+  body {
+    background: var(--color-bg);
+  }
+
+  .figure figcaption,
+  .figure figcaption a,
+  .video-figure figcaption,
+  .video-figure figcaption a,
+  .pdf-figure figcaption,
+  .pdf-figure figcaption a {
+    color: #fff;
+  }
+
+  .content a {
+    text-decoration: underline;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="shell">
+    <header class="site-header">
+      <span class="site-name">Toby Thomson</span>
+      <nav class="site-nav">
+        <a href="/">About</a>
+        <a href="/projects/">Projects</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </header>
+    <main class="content">
+      
+<h1>Louie</h1>
+<h2>About</h2>
+<p>Louie was LURA's first liquid rocket engine; we designed it mostly from textbooks and copying bits we liked off Google images. It was our entry to the inaugural Race to Space competition, designed for 2 kN of thrust on isopropanol and liquid oxygen and water-cooled through channels running the length of the chamber.</p>
+<p>Our ambitions were deliberately modest. The project mantra was to see whether we could get it to survive three seconds without completely melting; we managed that, and we were happy. That it also came within 200 N of its design thrust was the cherry on top.</p>
+<p>The name is Ed's doing. He set up LURA's liquid engine work and ran this project, and he likes monkeys, so the engine became Louie after the Jungle Book's King Louie, who has an entire song about being taught to make fire. Every LURA engine and pump since has been named after a monkey, and the tradition looks safe.</p>
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="Louie in all its glory.">
+  <figcaption>Louie in all its glory.</figcaption>
+</figure> -->
+<h2>Construction</h2>
+<p>The engine used a construction known as &quot;CSJ&quot;, for chamber, saddle and jacket. The name isn't ours; it came from the people who got there before us. The combustion chamber, throat and nozzle were machined as a single piece with the cooling channels milled into its outer contour. A two-part saddle then clamped around the throat, and the assembly slid into the jacket, which was essentially a large tube carrying ports for coolant in and out, instrumentation and mounting. The saddle earns its keep by holding the coolant introduced at the nozzle end tight against the chamber's channels; without it the flow passes over the top of them and most of the cooling effect is lost.</p>
+<p>Very little of this was our own idea. We leant heavily on the work of the <a href="https://ibb.ch/spl_old/products/index.html">Swiss Propulsion Laboratory</a>, on the SEPR engine fitted to the Mirage III, on an <a href="https://patents.google.com/patent/US7854395B1/en">XCOR patent</a> and on some photographs of a <a href="https://www.reddit.com/r/rocketry/comments/ywawmt/this_is_masten_space_systems_engine_how_do_you/">Masten Space Systems engine</a>. SPL's <a href="https://ibb.ch/spl_old/news/index.html">news pages</a> carry a good deal of detail on the Mirage engine, and are worth a read.</p>
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="SPL&#39;s take on the CSJ construction.">
+  <figcaption>SPL's take on the CSJ construction.</figcaption>
+</figure> -->
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="The SEPR engine from the Mirage III.">
+  <figcaption>The SEPR engine from the Mirage III.</figcaption>
+</figure> -->
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="XCOR&#39;s arrangement, from the patent.">
+  <figcaption>XCOR's arrangement, from the patent.</figcaption>
+</figure> -->
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="The Masten Space Systems engine that set us off.">
+  <figcaption>The Masten Space Systems engine that set us off.</figcaption>
+</figure> -->
+<h2>Manufacturing</h2>
+<p>The combustion chamber was the part I had been told was impossible to manufacture. It wasn't; it needed a manufacturing partner willing to take it on, which is a different thing. An in-house shop with its own queue of work is entitled to decide a job isn't for them, and my experience in industry made me comfortable rejecting the assertion and looking elsewhere. We sent the work to a machine shop in China, who turned the parts around in 14 days.</p>
+<figure class="pdf-figure">
+  <div class="pdf-frame">
+    <iframe src="/louie-drawing-pack.pdf#navpanes=0&amp;view=FitH" title="Louie&#39;s drawing pack." loading="lazy"></iframe>
+  </div>
+  <figcaption>Louie's drawing pack. <a href="/louie-drawing-pack.pdf">Open in a new tab</a>.</figcaption>
+</figure>
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="The chamber, throat and nozzle, machined from one piece with the cooling channels on the outside.">
+  <figcaption>The chamber, throat and nozzle, machined from one piece with the cooling channels on the outside.</figcaption>
+</figure> -->
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="The two-part saddle.">
+  <figcaption>The two-part saddle.</figcaption>
+</figure> -->
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="The jacket, with its coolant and instrumentation ports.">
+  <figcaption>The jacket, with its coolant and instrumentation ports.</figcaption>
+</figure> -->
+<p>Expediting the order that hard left the paperwork trailing behind it. Some of the customs documents hadn't been filed in time, so on the afternoon before our test slot we drove to the DHL sorting facility in the East Midlands and collected the parts ourselves. Then back to Leeds to have the thrust stand welded, which the university workshop did for us in fifteen minutes, and to buy hydraulic fittings for the coolant plumbing before the suppliers shut; I had specified a size which is perfectly standard and which nobody keeps on a shelf. We test-assembled the engine in the car.</p>
+<p>Hydrostatic testing and final assembly finished at 2 am. We were back in the car at 4 am, at Westcott for 9 am, and it was half past six that evening before the engine ran. About thirty hours from a DHL loading bay to a hot fire, and a good deal of that was <a href="https://www.ael.co.uk/">Airborne Engineering Ltd.</a>'s patience rather than ours.</p>
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="Hydrostatic testing the night before test day, with a cheap Amazon pressure tester and the appropriate footwear.">
+  <figcaption>Hydrostatic testing the night before test day, with a cheap Amazon pressure tester and the appropriate footwear.</figcaption>
+</figure> -->
+<h2>Nitrous Run</h2>
+<p>The engine was always meant to run on liquid oxygen, but AEL's LOX rig wasn't going to be available in time for Race to Space that year, so we put nitrous oxide in it instead. One of us did the sums and concluded the injector holes would be about the right size for the swap. The sums were not very good, and the injector stiffness we ended up with on nitrous (the pressure drop across the injector relative to chamber pressure) was low enough to make the engine difficult to start.</p>
+<p>Integration itself was painless; AEL had provided an interface control document up front and everything mated as it should. What gave us trouble was the sealing. The injector was an ox-centred triplet, with two O-rings between each propellant circuit and a vent hole drilled into the cavity between them. I had come up with a scheme for compressing all of the O-rings at once using a single large thread. It worked terribly; on our first attempt to fire the engine, every one of them leaked.</p>
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="The injector drawing.">
+  <figcaption>The injector drawing.</figcaption>
+</figure> -->
+<p>The vent holes were not my idea, and I had been fairly rude about them. A friend on the team had found them recommended in <a href="https://ntrs.nasa.gov/citations/19760023196">NASA SP-8089</a> and put them in anyway, which is ten points to him: when the seals let go, those vents are quite possibly what stopped us losing the engine.</p>
+<p>The O-rings were PTFE, chosen for compatibility with liquid oxygen, and since we were running nitrous that day they didn't need to be. Two of the team drove - carefully - to the local O-ring shop and came back with Viton replacements, one size of which was out of stock and had to be made up from cord and superglue.</p>
+<p>Even with the seals sorted it did not want to light, and AEL got it going in the end with some tricks on the timing of the nitrous inlet valve. When it finally ran, and kept running, and didn't melt, we were ecstatic. I think that came across; the team took the &quot;Best Team Spirit&quot; award at the competition, which after the week we'd had felt like the right one to win.</p>
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="Louie running on nitrous.">
+  <figcaption>Louie running on nitrous.</figcaption>
+</figure> -->
+<figure class="video-figure">
+  <div class="video-frame">
+    <iframe src="https://www.youtube.com/embed/yoBdH_BQp-I" title="Louie&#39;s first hot fire." frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>Louie's first hot fire.</figcaption>
+</figure>
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="Us with the Airborne Engineering team afterwards.">
+  <figcaption>Us with the Airborne Engineering team afterwards.</figcaption>
+</figure> -->
+<p>We collected a good deal of data and, in all honesty, never looked at most of it. The exception was the coolant temperatures. The video below puts AEL's slow-motion footage above a plot of coolant temperature along one of the channels, running from the nozzle to the injector face; the x-axis is distance along the engine rather than time. Ours are the blue traces and AEL's the orange. Theirs respond much faster, which we put down to size - roughly 1 mm outside diameter against our 3 mm, ours having been chosen large enough that they couldn't physically block the channel they were sampling. Ours also want calibrating; they don't agree with AEL's, or with each other, especially well. The trend is clearly the same in both, though, and you can watch the coolant heating up as it works its way from the nozzle towards the injector face. From AEL's data it looks as though we reached steady state during the burn, the coolant wall temperature going flat after a point.</p>
+<figure class="video-figure">
+  <div class="video-frame">
+    <iframe src="https://www.youtube.com/embed/U0Xdk01DY0s" title="Coolant temperature along the chamber, overlaid on AEL&#39;s slow-motion footage." frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <figcaption>Coolant temperature along the chamber, overlaid on AEL's slow-motion footage.</figcaption>
+</figure>
+<h2>Oxygen Run</h2>
+<p>Louie was really a 2022/23 project. By the following year our propulsion effort had moved on to <a href="/projects/zola/">Zola</a>, but we put the engine back on the test stand once more to settle a question left over from the first campaign, and to run it on the oxidiser it had been designed for in the first place. Could the Viton O-rings we'd bodged in for the nitrous run be made to work on liquid oxygen? Viton was never the obvious choice; the PTFE seals it replaced had been there for LOX compatibility to begin with. By then Louie was hardware we had finished with, which made it a cheap question to ask.</p>
+<p>The answer was no. It gave us a beautiful flame for a couple of seconds before the seals failed and the propellant manifold caught fire. Lesson learned: buy the expensive seals.</p>
+<!-- TODO video: the LOX firing. Needs the YouTube URL, then: {% youtube "URL", "Louie on liquid oxygen." %} -->
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="Louie&#39;s two seconds of grace...">
+  <figcaption>Louie's two seconds of grace...</figcaption>
+</figure> -->
+<!-- TODO figure: <figure class="figure">
+  <img src="[TODO: path]" alt="...and the injector afterwards.">
+  <figcaption>...and the injector afterwards.</figcaption>
+</figure> -->
+
+
+    </main>
+  </div>
+</body>
+</html>
