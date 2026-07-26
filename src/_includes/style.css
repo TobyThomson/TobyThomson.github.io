@@ -242,4 +242,8 @@ img {
   .figure figcaption a {
     color: #fff;
   }
+
+  .content a {
+    text-decoration: underline;
+  }
 }
