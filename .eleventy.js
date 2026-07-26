@@ -35,6 +35,27 @@ module.exports = function (eleventyConfig) {
 </figure>`;
   });
 
+  eleventyConfig.addShortcode("pdf", function (src, caption) {
+    const escape = (str) =>
+      String(str).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      }[c]));
+
+    const title = String(caption).replace(/<[^>]+>/g, "");
+    const viewer = `${src}#navpanes=0&view=FitH`;
+
+    return `<figure class="pdf-figure">
+  <div class="pdf-frame">
+    <iframe src="${escape(viewer)}" title="${escape(title)}" loading="lazy"></iframe>
+  </div>
+  <figcaption>${caption} <a href="${escape(src)}">Open in a new tab</a>.</figcaption>
+</figure>`;
+  });
+
   eleventyConfig.addShortcode("youtube", function (url, caption) {
     const escape = (str) =>
       String(str).replace(/[&<>"']/g, (c) => ({
