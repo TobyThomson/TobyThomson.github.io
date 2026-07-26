@@ -188,6 +188,33 @@ img {
   border-radius: 0 0 4px 4px;
 }
 
+/* ---------- Video figure ---------- */
+
+.video-figure {
+  margin: 1.5rem 0 0;
+}
+
+.video-figure .video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.video-figure .video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-figure figcaption {
+  padding: 0.5rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
 /* ---------- Project page ---------- */
 
 .back-link {
@@ -232,7 +259,7 @@ img {
       <span class="site-name">Toby Thomson</span>
       <nav class="site-nav">
         <a href="/" aria-current="page">About</a>
-        <a href="/portfolio/">Portfolio</a>
+        <a href="/projects/">Projects</a>
         <a href="/contact/">Contact</a>
       </nav>
     </header>
@@ -244,7 +271,7 @@ img {
 
 <p>I was apprenticed with the UK's <a href="https://www.npl.co.uk/">National Physical Laboratory</a>, hold an MEng in Electrical and Electronic Engineering from the <a href="https://www.leeds.ac.uk/">University of Leeds</a> and interned in the Avionics department at <a href="https://en.wikipedia.org/wiki/Orbex">Orbex</a>. My CV is available <a href="/toby-thomson-cv.pdf">here</a>.</p>
 
-<p>If you have work in mind and my <a href="/portfolio/">portfolio</a> suits you, please get in touch; <a href="https://xkcd.com/356/">I'm a sucker for a challenge</a>.</p>
+<p>If you have work in mind and my <a href="/projects/">portfolio</a> suits you, please get in touch; <a href="https://xkcd.com/356/">I'm a sucker for a challenge</a>.</p>
 
 <figure class="figure">
   <img src="/images/banner-photo.jpg" alt="My good side, Gryphon II Block II launch, 2026. Credit: Ben Adams.">

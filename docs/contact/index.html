@@ -188,6 +188,33 @@ img {
   border-radius: 0 0 4px 4px;
 }
 
+/* ---------- Video figure ---------- */
+
+.video-figure {
+  margin: 1.5rem 0 0;
+}
+
+.video-figure .video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.video-figure .video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-figure figcaption {
+  padding: 0.5rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
 /* ---------- Project page ---------- */
 
 .back-link {
@@ -232,7 +259,7 @@ img {
       <span class="site-name">Toby Thomson</span>
       <nav class="site-nav">
         <a href="/">About</a>
-        <a href="/portfolio/">Portfolio</a>
+        <a href="/projects/">Projects</a>
         <a href="/contact/" aria-current="page">Contact</a>
       </nav>
     </header>

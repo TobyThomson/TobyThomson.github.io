@@ -1,10 +1,10 @@
 ---
 layout: base.njk
-title: Portfolio
-permalink: /portfolio/
+title: Projects
+permalink: /projects/
 ---
 
-<h1>Portfolio</h1>
+<h1>Projects</h1>
 I've listed many of my extra-curricular and several of my professional projects below, organised by start year. Click through for details.
 
 {% for group in collections.projects | groupByYear %}
@@ -13,7 +13,7 @@ I've listed many of my extra-curricular and several of my professional projects 
   {% for project in group.projects %}
     <li>
       <a href="{{ project.url }}">{{ project.data.title }}</a>
-      {% if project.data.description %}<span class="project-desc"> — {{ project.data.description }}</span>{% endif %}
+      {% if project.data.description %}<span class="project-desc"> - {{ project.data.description }}</span>{% endif %}
     </li>
   {% endfor %}
   </ul>

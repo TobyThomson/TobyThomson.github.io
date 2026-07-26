@@ -1,9 +1,11 @@
 module.exports = function (eleventyConfig) {
+  eleventyConfig.ignores.add("src/projects/draft/**");
+
   eleventyConfig.addPassthroughCopy("src/fonts");
 
   eleventyConfig.addFilter("groupByYear", function (projects) {
     const groups = {};
-    for (const p of projects) {
+    for (const p of projects || []) {
       const year = p.data.year || "Other";
       if (!groups[year]) groups[year] = [];
       groups[year].push(p);
@@ -29,6 +31,28 @@ module.exports = function (eleventyConfig) {
 
     return `<figure class="figure">
   <img src="${escape(src)}" alt="${escape(altText)}">
+  <figcaption>${caption}</figcaption>
+</figure>`;
+  });
+
+  eleventyConfig.addShortcode("youtube", function (url, caption) {
+    const escape = (str) =>
+      String(str).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      }[c]));
+
+    const title = String(caption).replace(/<[^>]+>/g, "");
+    const videoId = new URL(url).searchParams.get("v");
+    const src = `https://www.youtube.com/embed/${videoId}`;
+
+    return `<figure class="video-figure">
+  <div class="video-frame">
+    <iframe src="${escape(src)}" title="${escape(title)}" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
   <figcaption>${caption}</figcaption>
 </figure>`;
   });
