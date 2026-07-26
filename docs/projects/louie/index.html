@@ -215,6 +215,11 @@ img {
   border: 0;
 }
 
+/* Shown only in print, where the embed itself cannot render. */
+.video-print-link {
+  display: none;
+}
+
 /* ---------- PDF figure ---------- */
 
 .pdf-figure {
@@ -293,6 +298,31 @@ img {
 
   .content a {
     text-decoration: underline;
+  }
+
+  /* Cross-origin iframes are not painted when printing, so the embed leaves an
+     empty box. Swap it for the video's URL, framed like an embedded PDF. */
+  .video-figure .video-frame {
+    border: 1px solid var(--color-border);
+    border-bottom: 0;
+  }
+
+  .video-figure .video-frame iframe {
+    display: none;
+  }
+
+  .video-print-link {
+    display: flex;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
+    overflow-wrap: anywhere;
+    color: var(--color-link);
+    text-decoration: underline;
+    text-decoration-color: var(--color-link);
   }
 }
 </style>
@@ -380,6 +410,7 @@ img {
 <figure class="video-figure">
   <div class="video-frame">
     <iframe src="https://www.youtube.com/embed/yoBdH_BQp-I" title="Louie&#39;s first hot fire." frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <a class="video-print-link" href="https://www.youtube.com/watch?v=yoBdH_BQp-I">https://www.youtube.com/watch?v=yoBdH_BQp-I</a>
   </div>
   <figcaption>Louie's first hot fire.</figcaption>
 </figure>
@@ -391,6 +422,7 @@ img {
 <figure class="video-figure">
   <div class="video-frame">
     <iframe src="https://www.youtube.com/embed/U0Xdk01DY0s" title="Coolant temperature along the chamber, overlaid on AEL&#39;s slow-motion footage." frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <a class="video-print-link" href="https://www.youtube.com/watch?v=U0Xdk01DY0s">https://www.youtube.com/watch?v=U0Xdk01DY0s</a>
   </div>
   <figcaption>Coolant temperature along the chamber, overlaid on AEL's slow-motion footage.</figcaption>
 </figure>

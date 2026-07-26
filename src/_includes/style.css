@@ -207,6 +207,11 @@ img {
   border: 0;
 }
 
+/* Shown only in print, where the embed itself cannot render. */
+.video-print-link {
+  display: none;
+}
+
 /* ---------- PDF figure ---------- */
 
 .pdf-figure {
@@ -285,5 +290,30 @@ img {
 
   .content a {
     text-decoration: underline;
+  }
+
+  /* Cross-origin iframes are not painted when printing, so the embed leaves an
+     empty box. Swap it for the video's URL, framed like an embedded PDF. */
+  .video-figure .video-frame {
+    border: 1px solid var(--color-border);
+    border-bottom: 0;
+  }
+
+  .video-figure .video-frame iframe {
+    display: none;
+  }
+
+  .video-print-link {
+    display: flex;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
+    overflow-wrap: anywhere;
+    color: var(--color-link);
+    text-decoration: underline;
+    text-decoration-color: var(--color-link);
   }
 }

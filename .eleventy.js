@@ -73,6 +73,7 @@ module.exports = function (eleventyConfig) {
     return `<figure class="video-figure">
   <div class="video-frame">
     <iframe src="${escape(src)}" title="${escape(title)}" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <a class="video-print-link" href="${escape(url)}">${escape(url)}</a>
   </div>
   <figcaption>${caption}</figcaption>
 </figure>`;
