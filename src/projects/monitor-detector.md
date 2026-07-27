@@ -1,6 +1,6 @@
 ---
 title: Monitor Detector
-description: 2nd stab at taking the UK amateur rocketry altitude record
+description: Vacuum-compatible optical calibration instrument
 year: 2019
 ---
 
@@ -11,3 +11,7 @@ which sampled the instrument’s light source allowing it to be traceably calibr
 operate in vacuum, manage its thermals and capture readings from Si and InGaAs photodiodes and a
 commercial spectrometer. I designed the mechanics for holding and aligning the optics, the electronics for
 reading off the photodiodes and the electrical cabinet which housed all the supporting equipment.
+
+{% figure "/images/monitor-detector-overview.jpg", "The STAR-CC-OGSE instrument." %}
+{% figure "/images/monitor-detector.jpg", "SolidWorks of the full detector assembly." %}
+{% figure "/images/monitor-detector-alignment.jpg", "Me doing the alignment of the detector optics." %}

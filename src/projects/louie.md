@@ -12,7 +12,8 @@ Our ambitions were deliberately modest. The project mantra was to see whether we
 
 The name is Ed's doing. He set up LURA's liquid engine work and ran this project, and he likes monkeys, so the engine became Louie after the Jungle Book's King Louie, who has an entire song about being taught to make fire. Every LURA engine and pump since has been named after a monkey, and the tradition looks safe.
 
-<!-- TODO figure: {% figure "[TODO: path]", "Louie in all its glory." %} -->
+{% figure "/images/louie-nos-firing.jpg", "Louie in all his glory." %}
+{% figure "/images/louie-team-photo.JPG", "The team that made it happen." %}
 
 ## Construction
 
@@ -70,6 +71,9 @@ We collected a good deal of data and, in all honesty, never looked at most of it
 Louie was really a 2022/23 project. By the following year our propulsion effort had moved on to [Zola](/projects/zola/), but we put the engine back on the test stand once more to settle a question left over from the first campaign, and to run it on the oxidiser it had been designed for in the first place. Could the Viton O-rings we'd bodged in for the nitrous run be made to work on liquid oxygen? Viton was never the obvious choice; the PTFE seals it replaced had been there for LOX compatibility to begin with. By then Louie was hardware we had finished with, which made it a cheap question to ask.
 
 The answer was no. It gave us a beautiful flame for a couple of seconds before the seals failed and the propellant manifold caught fire. Lesson learned: buy the expensive seals.
+
+{% figure "/images/louie-lox-firing.png", "Firing on LOX, before the incident." %}
+{% figure "/images/louie-teardown.JPG", "Post incident." %}
 
 <!-- TODO video: the LOX firing. Needs the YouTube URL, then: {% raw %}{% youtube "URL", "Louie on liquid oxygen." %}{% endraw %} -->
 
